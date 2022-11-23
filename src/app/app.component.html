@@ -1,0 +1,21 @@
+<h3 class="first">Vertical VirtualScroll with Fixed Viewport</h3>
+<div>I have added the VirtualScroll to the table and receive errors in the console (Firefox & Chrome). It seems to be conntected to the cdk scrollbar. Error message looks like: <span style="color: red">ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: 'height: 1400px'. Current value: 'height: 1428px'</span>. When adding a a new car, more errors appear.</div>
+<div>
+  <button (click)="addCar()" style="cursor: pointer">Add a new car</button>
+</div>
+<p-table [columns]="cols" [value]="cars1" [virtualScroll]="true" [scrollable]="true" scrollHeight="200px">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
